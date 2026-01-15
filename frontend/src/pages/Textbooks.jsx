@@ -3,6 +3,7 @@ import './Textbooks.css';
 import EditBookModal from './EditBookModal';
 
 const Textbooks = ({ token }) => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL || '';
     // ... existing state ...
     const [books, setBooks] = useState([]);
     const [filter, setFilter] = useState('ALL');
@@ -16,7 +17,7 @@ const Textbooks = ({ token }) => {
     }, []);
 
     const fetchBooks = () => {
-        fetch('/api/textbooks/')
+        fetch(`${API_BASE_URL}/api/textbooks/`)
             .then(res => res.json())
             .then(data => setBooks(data))
             .catch(err => console.error("Failed to fetch books", err));
@@ -32,7 +33,7 @@ const Textbooks = ({ token }) => {
 
     const handleSave = async (id, formData) => {
         const isCreating = !id;
-        const url = isCreating ? '/api/textbooks/' : `/api/textbooks/${id}/`;
+        const url = isCreating ? `${API_BASE_URL}/api/textbooks/` : `${API_BASE_URL}/api/textbooks/${id}/`;
         const method = isCreating ? 'POST' : 'PATCH';
 
         try {
@@ -68,7 +69,7 @@ const Textbooks = ({ token }) => {
                 headers['Authorization'] = `Token ${token}`;
             }
 
-            const response = await fetch(`/api/textbooks/${id}/`, {
+            const response = await fetch(`${API_BASE_URL}/api/textbooks/${id}/`, {
                 method: 'DELETE',
                 headers: headers,
             });

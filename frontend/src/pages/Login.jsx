@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL || '';
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -13,7 +14,7 @@ const Login = ({ onLogin }) => {
         setLoading(true);
 
         try {
-            const response = await fetch('/api/api-token-auth/', {
+            const response = await fetch(`${API_BASE_URL}/api/api-token-auth/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

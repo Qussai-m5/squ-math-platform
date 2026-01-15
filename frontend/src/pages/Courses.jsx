@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import './Courses.css';
 
 const Courses = () => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL || '';
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('/api/courses/')
+        fetch(`${API_BASE_URL}/api/courses/`)
             .then(res => res.json())
             .then(data => {
                 setCourses(data);

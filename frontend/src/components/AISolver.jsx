@@ -6,6 +6,7 @@ import 'katex/dist/katex.min.css';
 import './AISolver.css';
 
 const AISolver = () => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL || '';
     const [isOpen, setIsOpen] = useState(false);
     const [problem, setProblem] = useState('');
     const [history, setHistory] = useState([]);
@@ -22,7 +23,7 @@ const AISolver = () => {
         setProblem('');
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/ai/solve/', {
+            const response = await fetch(`${API_BASE_URL}/api/ai/solve/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

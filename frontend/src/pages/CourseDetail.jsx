@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import './CourseDetail.css';
 
 const CourseDetail = () => {
+    const API_BASE_URL = import.meta.env.VITE_API_URL || '';
     const { id } = useParams();
     const [course, setCourse] = useState(null);
     const [materials, setMaterials] = useState([]);

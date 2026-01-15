@@ -45,6 +45,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'squ_math.urls'
 
+CORS_ALLOW_ALL_ORIGINS = True # Allow all origins for the school project
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
