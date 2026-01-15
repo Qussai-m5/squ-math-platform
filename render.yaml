@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: squ-math-backend
@@ -13,3 +14,20 @@ services:
         value: False
       - key: PYTHON_VERSION
         value: 3.11.0
+=======
+services:
+  - type: web
+    name: squ-math-backend
+    env: python
+    rootDir: backend
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn squ_math.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: PYTHON_VERSION
+        value: 3.11.0
+>>>>>>> 5a4be34354e7c8f47f95d348bd800444e2498a23
